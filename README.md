@@ -21,6 +21,14 @@ node --test tests/report.test.mjs
 
 Die Logiktests benötigen Node.js 22.18+ mit TypeScript Type Stripping (geprüft mit Node 24). Sie prüfen Validierung, die begrenzte Zuordnung, Meldetext und Clipboard-Erfolg/Fehler mit einem Test-Clipboard. Sie ersetzen keinen Browser- oder Gerätetest.
 
+## GitHub-Prüfungen und Updates
+
+GitHub Actions führt bei Pull Requests und Pushes auf `main` mit Node.js 24 automatisch `npm ci`, Lint, Build und die Logiktests aus. Der Workflow kann zusätzlich unter **Actions → CI → Run workflow** manuell gestartet werden.
+
+Dependabot prüft npm-Abhängigkeiten und GitHub Actions montags um 09:00 Uhr (Europe/Berlin). Minor- und Patch-Updates für npm werden gruppiert; Major-Updates bleiben einzeln prüfbar. Sicherheitsupdates sind separat aktiviert und nicht auf diesen Wochenplan beschränkt. Updates werden als PR vorbereitet und nicht automatisch gemergt.
+
+CodeQL verwendet GitHubs Default Setup für JavaScript/TypeScript. Ergebnisse stehen unter **Security → Code scanning**; Dependabot-Hinweise unter **Security → Dependabot**.
+
 ## Ablauf
 
 Kategorie, Ort und Beschreibung eingeben, dann „Meldung vorbereiten“. In der Vorschau lassen sich die Angaben prüfen, kopieren und mit „Angaben bearbeiten“ ohne Datenverlust ändern. Ohne Clipboard-Zugriff wird der Text zum manuellen Kopieren markiert. Die Angaben liegen nur im React-Speicher; ein Neuladen verwirft sie. Keine Daten werden automatisch an eine Meldestelle übertragen.
