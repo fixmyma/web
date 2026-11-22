@@ -1,5 +1,7 @@
 ﻿# FixMyMA: gerenderter Designreview
 
+Aktueller Gestaltungsvorschlag zur Sichtprüfung: [Apple-inspirierter Designreview mit neuen Screenshots](apple-design-review.md). Der folgende Abschnitt dokumentiert die vorherige Stadtleitsystem-Richtung.
+
 ## Mannheimer Stadtleitsystem · 22.11.2026
 
 Aufgabenbranch: `feat/mannheim-wayfinding`, Ausgangsstand: `ffd8ef9` von `origin/main`.

@@ -165,7 +165,7 @@ function App() {
                 <label htmlFor="description">Beschreibung</label>
                 <span className="hint character-count" id="description-count"><span className="visually-hidden">Zeichen: </span>{draft.description.length.toLocaleString('de-DE')} / 2.000</span>
               </div>
-              <textarea id="description" name="description" required rows={4} maxLength={2000}
+              <textarea id="description" name="description" required rows={3} maxLength={2000}
                 placeholder="Zum Beispiel: Glasscheibe am Wartehäuschen zerbrochen. Scherben liegen neben der Sitzbank."
                 value={draft.description} onChange={(event) => update('description', event.target.value)}
                 aria-invalid={Boolean(errors.description)}
