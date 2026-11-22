@@ -11,7 +11,7 @@ const reference: ReportDraft = {
 }
 
 describe('report validation', () => {
-  test('empty and whitespace-only entries cannot prepare a report', () => {
+  test('should reject empty and whitespace-only entries', () => {
     expect(validateReport({ category: '', location: '   ', description: '\n    ' }))
       .toEqual({
         category: expect.any(String),
@@ -20,7 +20,7 @@ describe('report validation', () => {
       })
   })
 
-  test('rejects too little detail and excessive input, but accepts the reference case', () => {
+  test('should reject too little detail and excessive input but accept the reference case', () => {
     const tooShort = validateReport({ ...reference, location: 'MA', description: 'Glas' })
     expect(tooShort.location).toBeTruthy()
     expect(tooShort.description).toBeTruthy()
@@ -33,7 +33,7 @@ describe('report validation', () => {
 })
 
 describe('reporting route', () => {
-  test('Waldhof Nord resolves to the official rnv contact without certifying ownership', () => {
+  test('should resolve Waldhof Nord to the official rnv contact without certifying ownership', () => {
     for (const location of ['Waldhof Nord', ' WALDHOF-NORD ', 'Haltestelle Waldhof Nord, Mannheim']) {
       const route = resolveReportingRoute({ ...reference, location })
       expect(route.kind).toBe('official-contact')
@@ -43,7 +43,7 @@ describe('reporting route', () => {
     }
   })
 
-  test('different locations, false partial matches and other categories stay unconfirmed', () => {
+  test('should leave different locations, false partial matches and other categories unconfirmed', () => {
     for (const location of ['Paradeplatz', 'Nicht Waldhof Nord', 'Waldhof Nordstraße', 'Waldhof Nord Heidelberg']) {
       const route = resolveReportingRoute({ ...reference, location })
       expect(route.kind).toBe('unconfirmed')
@@ -54,7 +54,7 @@ describe('reporting route', () => {
 })
 
 describe('prepared report', () => {
-  test('includes exactly the user details and does not mutate the draft', () => {
+  test('should include exactly the user details without mutating the draft', () => {
     const draft = Object.freeze({ ...reference, location: ' Waldhof Nord ', description: ' Scheibe kaputt.\nNeben der Sitzbank. ' })
     expect(createReportText(draft)).toBe('Schadensmeldung – Mannheim\n\nKategorie: Haltestelle\nOrt: Waldhof Nord\n\nBeschreibung:\nScheibe kaputt.\nNeben der Sitzbank.')
     expect(draft.location).toBe(' Waldhof Nord ')
@@ -62,7 +62,7 @@ describe('prepared report', () => {
 })
 
 describe('clipboard', () => {
-  test('success means the complete prepared text was written', async () => {
+  test('should report success after writing the complete prepared text', async () => {
     const writeText = vi.fn<(text: string) => Promise<void>>().mockResolvedValue(undefined)
     const text = createReportText(reference)
     await expect(copyReport(text, { writeText })).resolves.toBe(true)
@@ -70,7 +70,7 @@ describe('clipboard', () => {
     expect(writeText).toHaveBeenCalledWith(text)
   })
 
-  test('missing or denied access offers manual copying rather than false success', async () => {
+  test('should offer manual copying when clipboard access is missing or denied', async () => {
     const writeText = vi.fn<(text: string) => Promise<void>>().mockRejectedValue(new Error('denied'))
     await expect(copyReport('Meldung', undefined)).resolves.toBe(false)
     await expect(copyReport('Meldung', { writeText })).resolves.toBe(false)
