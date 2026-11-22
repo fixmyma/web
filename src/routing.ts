@@ -17,7 +17,7 @@ export function resolveReportingRoute(draft: ReportDraft) {
     return {
       kind: 'official-contact' as const,
       contact: reportingContacts.rnv,
-      explanation: 'Für Schäden an Haltestellen bietet die rnv einen offiziellen Meldeweg. Ob die konkrete Glasscheibe der rnv gehört oder ein anderer Betreiber zuständig ist, ist hier nicht bestätigt.',
+      explanation: 'Die rnv nimmt Hinweise auf Schäden an Haltestellen entgegen. Wer die konkrete Glasscheibe wartet, ist hier nicht bestätigt.',
     }
   }
   return {

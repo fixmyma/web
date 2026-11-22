@@ -1,6 +1,6 @@
 ﻿export const categories = [
   { id: 'stop', label: 'Haltestelle' },
-  { id: 'street', label: 'Straße & Gehweg' },
+  { id: 'street', label: 'Straße / Weg' },
   { id: 'waste', label: 'Müll' },
   { id: 'other', label: 'Sonstiges' },
 ] as const
