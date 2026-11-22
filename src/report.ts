@@ -9,6 +9,11 @@ export type Category = (typeof categories)[number]['id']
 export type ReportDraft = { category: Category | ''; location: string; description: string }
 export type ReportErrors = Partial<Record<keyof ReportDraft, string>>
 
+export function createReportText(draft: ReportDraft): string {
+  const category = categories.find((entry) => entry.id === draft.category)?.label ?? 'Unbekannt'
+  return `Schadensmeldung – Mannheim\n\nKategorie: ${category}\nOrt: ${draft.location.trim()}\n\nBeschreibung:\n${draft.description.trim()}`
+}
+
 export function validateReport(draft: ReportDraft): ReportErrors {
   const errors: ReportErrors = {}
   if (!categories.some((category) => category.id === draft.category)) {
