@@ -17,7 +17,7 @@ export function resolveReportingRoute(draft: Pick<ReportDraft, 'category' | 'loc
     return {
       kind: 'official-contact' as const,
       contact: reportingContacts.rnv,
-      explanation: 'Die Wartungszuständigkeit für die konkrete Glasscheibe ist nicht bestätigt.',
+      explanation: 'Wer die Glasscheibe wartet, ist nicht bestätigt.',
     }
   }
   return {

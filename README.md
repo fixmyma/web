@@ -52,6 +52,8 @@ CodeQL verwendet GitHubs Default Setup für JavaScript/TypeScript. Ergebnisse st
 
 ## Browserprüfung und Designreview
 
+Die aktuelle [Pilot-Prüfung](docs/pilot-review.md) dokumentiert den Meldeweg-Hinweis vor der Beschreibung, bekannte und offene Fälle bei 320 und 390 px sowie die noch offenen echten Gerätetests für iPhone-Safari und Android-Chrome.
+
 Formular und Vorschau wurden bei 390 × 844 px und 1440 × 1000 px vor und nach der Gestaltung im Browser geprüft. Validierung, Waldhof Nord, ein unbekannter Ort, Bearbeiten, Tastaturbedienung und echtes Kopieren wurden mit einem lokalen Playwright-Testbrowser geprüft. Ein simulierter Clipboard-Fehler wurde zusätzlich bis zum manuellen Kopieren getestet. Vorher-/Nachher-Screenshots, Messwerte und die genauen Prüfgrenzen stehen im [Apple-inspirierten Designreview](docs/apple-design-review.md); die vorherige Richtung bleibt im [Stadtleitsystem-Review](docs/design-review.md) dokumentiert.
 
 Offen bleiben Tests auf einem physischen Smartphone mit Bildschirmtastatur sowie weitere Browser-Engines. Die mobilen Aufnahmen zeigen eine Browser-Emulation.

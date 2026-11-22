@@ -61,6 +61,36 @@
       "viewport": "390",
       "name": "should select the report after a simulated clipboard failure and allow real manual keyboard copying",
       "passed": true
+    },
+    {
+      "viewport": "desktop",
+      "name": "should show the existing route directly after category and location, before description, and update it on either input",
+      "passed": true
+    },
+    {
+      "viewport": "desktop",
+      "name": "should reject empty and whitespace-only input and focus the first error",
+      "passed": true
+    },
+    {
+      "viewport": "desktop",
+      "name": "should show the verified rnv route and copy the complete report to the real clipboard",
+      "passed": true
+    },
+    {
+      "viewport": "desktop",
+      "name": "should preserve and edit entries and provide a copyable report without an invented contact for an unknown location",
+      "passed": true
+    },
+    {
+      "viewport": "desktop",
+      "name": "should support keyboard selection, form entry, preview focus and copying",
+      "passed": true
+    },
+    {
+      "viewport": "desktop",
+      "name": "should select the report after a simulated clipboard failure and allow real manual keyboard copying",
+      "passed": true
     }
   ],
   "responsive": [
@@ -69,7 +99,7 @@
         "width": 320,
         "height": 740
       },
-      "primaryBottom": 953.109375,
+      "primaryBottom": 858.109375,
       "minCategoryHeight": 56,
       "textSize200PercentNoHorizontalOverflow": true
     },
@@ -78,7 +108,7 @@
         "width": 360,
         "height": 740
       },
-      "primaryBottom": 804.109375,
+      "primaryBottom": 730.109375,
       "minCategoryHeight": 56,
       "textSize200PercentNoHorizontalOverflow": true
     },
@@ -87,7 +117,7 @@
         "width": 390,
         "height": 740
       },
-      "primaryBottom": 804.109375,
+      "primaryBottom": 730.109375,
       "minCategoryHeight": 56,
       "textSize200PercentNoHorizontalOverflow": true
     }

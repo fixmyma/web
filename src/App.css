@@ -25,10 +25,11 @@ form {
   background: var(--paper);
 }
 fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
-.pilot-scope { color: var(--secondary); font-size: 0.875rem; line-height: 1.5; margin: 0 0 20px; }
-.route-notice { padding: 12px; border-left: 2px solid var(--ink); background: #f5f6f8; line-height: 1.5; }
+.form-page h1 { margin-bottom: 12px; }
+.pilot-scope { color: var(--secondary); font-size: 0.875rem; line-height: 1.5; margin: 0 0 16px; }
+.route-notice { padding-top: 8px; line-height: 1.5; overflow-wrap: anywhere; }
 .route-notice-title { font-size: 0.875rem; font-weight: 600; }
-.route-notice p + p { margin-top: 8px; }
+.route-notice p + p { margin-top: 4px; }
 .route-notice a { display: flex; align-items: center; min-height: 48px; padding-block: 8px; font-size: 0.875rem; overflow-wrap: anywhere; }
 .categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.5rem), 1fr)); gap: 8px; }
 .category {

@@ -7,7 +7,7 @@ Diese Regeln gelten für das gesamte Repository. Konkrete Anweisungen des Nutzer
 FixMyMA hilft Menschen in Mannheim, Schäden im öffentlichen Raum zu beschreiben, einen verifizierten Meldeweg zu finden und einen Meldetext zur eigenen Weitergabe vorzubereiten.
 
 - Aktueller Stand: Frontend-MVP mit React, TypeScript und Vite; Vitest für Tests, Oxlint für Linting. Verwende npm und die vorhandenen npm-Skripte. Die CI verwendet Node.js 24.
-- Ablauf: Kategorie, Ort und Beschreibung eingeben, Vorschau prüfen, Angaben bei Bedarf ohne Datenverlust bearbeiten und Meldetext kopieren.
+- Ablauf: Nach Kategorie und Ort den bestehenden Meldeweg direkt unter dem Ort zeigen, noch vor der Beschreibung. Pilotumfang: geprüfter rnv-Kontaktweg für Haltestelle Waldhof Nord, sonst offener Meldeweg mit Textentwurf. Danach Beschreibung ergänzen, Vorschau prüfen, Angaben ohne Datenverlust bearbeiten und Meldetext kopieren.
 - Referenzfall: kaputte Glasscheibe am Wartehäuschen der Haltestelle Waldhof Nord in Mannheim.
 - Es gibt aktuell kein Backend, keine dauerhafte Speicherung und keinen automatischen Versand. Eingaben liegen im React-Arbeitsspeicher und gehen beim Neuladen verloren. Neue Speicherung oder Versandfunktionen gehören nur in ausdrücklich entsprechend beauftragte Aufgaben.
 - Ein offizieller Kontaktweg bestätigt nicht automatisch die Eigentümerschaft oder Wartungszuständigkeit für ein einzelnes Objekt. Kontakte und Zuständigkeiten niemals erfinden. Neue Zuordnungen anhand offizieller Quellen prüfen und Quelle sowie Prüfdatum festhalten. Unklarheiten in der Oberfläche sichtbar lassen.

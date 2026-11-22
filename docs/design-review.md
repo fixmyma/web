@@ -1,6 +1,6 @@
 ﻿# FixMyMA: gerenderter Designreview
 
-Aktueller Gestaltungsvorschlag zur Sichtprüfung: [Apple-inspirierter Designreview mit neuen Screenshots](apple-design-review.md). Der folgende Abschnitt dokumentiert die vorherige Stadtleitsystem-Richtung.
+Aktueller Stand zur Sichtprüfung: [Pilot-Ablauf mit frühem Meldeweg-Hinweis](pilot-review.md). Die [Apple-inspirierte Gestaltung und ihre zurückhaltende Farbkorrektur](apple-design-review.md) bleiben dokumentiert; der folgende Abschnitt beschreibt die frühere Stadtleitsystem-Richtung.
 
 ## Mannheimer Stadtleitsystem · 22.11.2026
 

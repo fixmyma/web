@@ -130,7 +130,7 @@ function App() {
           </div>
         ) : (
           <>
-          <p className="pilot-scope">Pilot in Mannheim: Ein geprüfter Kontaktweg für die Haltestelle Waldhof Nord. Für weitere Orte kannst du einen Textentwurf vorbereiten.</p>
+          <p className="pilot-scope">Pilot: Geprüfter rnv-Kontaktweg für Haltestelle Waldhof Nord. Sonst Textentwurf.</p>
           <form ref={formRef} onSubmit={submit} noValidate>
             {Object.values(errors).some(Boolean) && (
               <p className="error error-summary" role="alert">Bitte ergänze die markierten Angaben.</p>
@@ -164,7 +164,7 @@ function App() {
               {errors.location && <p className="error" id="location-error">{errors.location}</p>}
               <div className="route-notice" id="location-route" role="status" aria-live="polite" aria-atomic="true">
                 {!canCheckRoute ? (
-                  <p className="hint">Wähle eine Kategorie und gib den Ort ein, um den Meldeweg zu prüfen.</p>
+                  <p className="hint">Meldeweg nach Kategorie und Ort</p>
                 ) : hasOfficialRoute ? (
                   <>
                     <p className="route-notice-title">Geprüfter Meldeweg: rnv</p>
@@ -196,7 +196,7 @@ function App() {
 
             <div className="form-actions">
               <button className="primary" type="submit">Meldung vorbereiten</button>
-              <p className="hint">Als Nächstes: Meldeweg und Vorschau</p>
+              <p className="hint">Als Nächstes: Meldetext prüfen</p>
             </div>
           </form>
           </>
