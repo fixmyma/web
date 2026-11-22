@@ -1,0 +1,86 @@
+{
+  "browser": "157.0.8103.79",
+  "date": "2026-11-22",
+  "scenarios": [
+    {
+      "viewport": "mobile",
+      "name": "should reject empty and whitespace-only input and focus the first error",
+      "passed": true
+    },
+    {
+      "viewport": "mobile",
+      "name": "should show the verified rnv route and copy the complete report to the real clipboard",
+      "passed": true
+    },
+    {
+      "viewport": "mobile",
+      "name": "should preserve and edit entries and provide a copyable report without an invented contact for an unknown location",
+      "passed": true
+    },
+    {
+      "viewport": "mobile",
+      "name": "should support keyboard selection, form entry, preview focus and copying",
+      "passed": true
+    },
+    {
+      "viewport": "mobile",
+      "name": "should select the report after a simulated clipboard failure and allow real manual keyboard copying",
+      "passed": true
+    },
+    {
+      "viewport": "desktop",
+      "name": "should reject empty and whitespace-only input and focus the first error",
+      "passed": true
+    },
+    {
+      "viewport": "desktop",
+      "name": "should show the verified rnv route and copy the complete report to the real clipboard",
+      "passed": true
+    },
+    {
+      "viewport": "desktop",
+      "name": "should preserve and edit entries and provide a copyable report without an invented contact for an unknown location",
+      "passed": true
+    },
+    {
+      "viewport": "desktop",
+      "name": "should support keyboard selection, form entry, preview focus and copying",
+      "passed": true
+    },
+    {
+      "viewport": "desktop",
+      "name": "should select the report after a simulated clipboard failure and allow real manual keyboard copying",
+      "passed": true
+    }
+  ],
+  "responsive": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "primaryBottom": 792.3125,
+      "minCategoryHeight": 56,
+      "textSize200PercentNoHorizontalOverflow": true
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "primaryBottom": 664.3125,
+      "minCategoryHeight": 56,
+      "textSize200PercentNoHorizontalOverflow": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 740
+      },
+      "primaryBottom": 664.3125,
+      "minCategoryHeight": 56,
+      "textSize200PercentNoHorizontalOverflow": true
+    }
+  ],
+  "runtimeErrors": []
+}

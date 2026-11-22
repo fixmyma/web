@@ -1,0 +1,126 @@
+{
+  "browser": "157.0.8103.79",
+  "date": "2026-11-22",
+  "scenarios": [
+    {
+      "viewport": "320",
+      "name": "should show the existing route directly after category and location, before description, and update it on either input",
+      "passed": true
+    },
+    {
+      "viewport": "320",
+      "name": "should reject empty and whitespace-only input and focus the first error",
+      "passed": true
+    },
+    {
+      "viewport": "320",
+      "name": "should show the verified rnv route and copy the complete report to the real clipboard",
+      "passed": true
+    },
+    {
+      "viewport": "320",
+      "name": "should preserve and edit entries and provide a copyable report without an invented contact for an unknown location",
+      "passed": true
+    },
+    {
+      "viewport": "320",
+      "name": "should support keyboard selection, form entry, preview focus and copying",
+      "passed": true
+    },
+    {
+      "viewport": "320",
+      "name": "should select the report after a simulated clipboard failure and allow real manual keyboard copying",
+      "passed": true
+    },
+    {
+      "viewport": "390",
+      "name": "should show the existing route directly after category and location, before description, and update it on either input",
+      "passed": true
+    },
+    {
+      "viewport": "390",
+      "name": "should reject empty and whitespace-only input and focus the first error",
+      "passed": true
+    },
+    {
+      "viewport": "390",
+      "name": "should show the verified rnv route and copy the complete report to the real clipboard",
+      "passed": true
+    },
+    {
+      "viewport": "390",
+      "name": "should preserve and edit entries and provide a copyable report without an invented contact for an unknown location",
+      "passed": true
+    },
+    {
+      "viewport": "390",
+      "name": "should support keyboard selection, form entry, preview focus and copying",
+      "passed": true
+    },
+    {
+      "viewport": "390",
+      "name": "should select the report after a simulated clipboard failure and allow real manual keyboard copying",
+      "passed": true
+    },
+    {
+      "viewport": "desktop",
+      "name": "should show the existing route directly after category and location, before description, and update it on either input",
+      "passed": true
+    },
+    {
+      "viewport": "desktop",
+      "name": "should reject empty and whitespace-only input and focus the first error",
+      "passed": true
+    },
+    {
+      "viewport": "desktop",
+      "name": "should show the verified rnv route and copy the complete report to the real clipboard",
+      "passed": true
+    },
+    {
+      "viewport": "desktop",
+      "name": "should preserve and edit entries and provide a copyable report without an invented contact for an unknown location",
+      "passed": true
+    },
+    {
+      "viewport": "desktop",
+      "name": "should support keyboard selection, form entry, preview focus and copying",
+      "passed": true
+    },
+    {
+      "viewport": "desktop",
+      "name": "should select the report after a simulated clipboard failure and allow real manual keyboard copying",
+      "passed": true
+    }
+  ],
+  "responsive": [
+    {
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "primaryBottom": 858.109375,
+      "minCategoryHeight": 56,
+      "textSize200PercentNoHorizontalOverflow": true
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 740
+      },
+      "primaryBottom": 730.109375,
+      "minCategoryHeight": 56,
+      "textSize200PercentNoHorizontalOverflow": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 740
+      },
+      "primaryBottom": 730.109375,
+      "minCategoryHeight": 56,
+      "textSize200PercentNoHorizontalOverflow": true
+    }
+  ],
+  "runtimeErrors": []
+}

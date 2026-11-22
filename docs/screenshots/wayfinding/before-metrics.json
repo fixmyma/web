@@ -1,0 +1,46 @@
+[
+  {
+    "name": "mobile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "form": {
+      "primaryTop": 723.390625,
+      "primaryBottom": 775.390625,
+      "viewportHeight": 844,
+      "pageWidth": 390,
+      "viewportWidth": 390
+    },
+    "preview": {
+      "copyTop": 871.078125,
+      "copyBottom": 923.078125,
+      "pageHeight": 1166,
+      "pageWidth": 390,
+      "viewportWidth": 390
+    },
+    "errors": []
+  },
+  {
+    "name": "desktop",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "form": {
+      "primaryTop": 763.390625,
+      "primaryBottom": 815.390625,
+      "viewportHeight": 1000,
+      "pageWidth": 1440,
+      "viewportWidth": 1440
+    },
+    "preview": {
+      "copyTop": 813.296875,
+      "copyBottom": 865.296875,
+      "pageHeight": 1111,
+      "pageWidth": 1440,
+      "viewportWidth": 1440
+    },
+    "errors": []
+  }
+]

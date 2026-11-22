@@ -8,7 +8,9 @@ Mit FixMyMA kannst du einen Schaden in Mannheim beschreiben, den passenden Melde
 
 ## Ablauf
 
-Kategorie, Ort und Beschreibung eingeben, dann „Meldung vorbereiten“. In der Vorschau lassen sich die Angaben prüfen, kopieren und mit „Angaben bearbeiten“ ohne Datenverlust ändern. Ohne Clipboard-Zugriff wird der Text zum manuellen Kopieren markiert. Die Angaben liegen nur im React-Speicher; ein Neuladen verwirft sie. Keine Daten werden automatisch an eine Meldestelle übertragen.
+Kategorie und Ort eingeben: Direkt unter dem Ort zeigt die App schon vor der Beschreibung den geprüften rnv-Kontaktweg für Haltestelle / Waldhof Nord oder „Meldeweg offen“. Der rnv-Link ist sofort erreichbar; ein offener Meldeweg lässt einen Textentwurf weiterhin zu. Der kurze Hinweis vor dem Formular erklärt diesen Pilotumfang.
+
+Danach Beschreibung ergänzen und „Meldung vorbereiten“ wählen. In der Vorschau lassen sich die Angaben prüfen, kopieren und mit „Angaben bearbeiten“ ohne Datenverlust ändern. Ohne Clipboard-Zugriff wird der Text zum manuellen Kopieren markiert. Die Angaben liegen nur im React-Speicher; ein Neuladen verwirft sie. Keine Daten werden automatisch an eine Meldestelle übertragen.
 
 ## Lokal starten
 
@@ -48,6 +50,10 @@ Dependabot prüft npm-Abhängigkeiten und GitHub Actions montags um 09:00 Uhr (E
 
 CodeQL verwendet GitHubs Default Setup für JavaScript/TypeScript. Ergebnisse stehen unter **Security → Code scanning**; Dependabot-Hinweise unter **Security → Dependabot**.
 
-## Noch manuell prüfen
+## Browserprüfung und Designreview
 
-Bei 390 px und Desktop: leeres Formular absenden, Fehler/Fokus prüfen; Haltestelle / Waldhof Nord / Glasschaden eingeben; Vorschau prüfen; zurückgehen und Eingaben ändern; Text kopieren und in einen lokalen Texteditor einfügen; verweigerte Clipboard-Berechtigung und unbekannte Orte prüfen. Auch Tastaturbedienung, Zoom und echte mobile Bildschirmtastatur sind zu prüfen.
+Die aktuelle [Pilot-Prüfung](docs/pilot-review.md) dokumentiert den Meldeweg-Hinweis vor der Beschreibung, bekannte und offene Fälle bei 320 und 390 px sowie die noch offenen echten Gerätetests für iPhone-Safari und Android-Chrome.
+
+Formular und Vorschau wurden bei 390 × 844 px und 1440 × 1000 px vor und nach der Gestaltung im Browser geprüft. Validierung, Waldhof Nord, ein unbekannter Ort, Bearbeiten, Tastaturbedienung und echtes Kopieren wurden mit einem lokalen Playwright-Testbrowser geprüft. Ein simulierter Clipboard-Fehler wurde zusätzlich bis zum manuellen Kopieren getestet. Vorher-/Nachher-Screenshots, Messwerte und die genauen Prüfgrenzen stehen im [Apple-inspirierten Designreview](docs/apple-design-review.md); die vorherige Richtung bleibt im [Stadtleitsystem-Review](docs/design-review.md) dokumentiert.
+
+Offen bleiben Tests auf einem physischen Smartphone mit Bildschirmtastatur sowie weitere Browser-Engines. Die mobilen Aufnahmen zeigen eine Browser-Emulation.

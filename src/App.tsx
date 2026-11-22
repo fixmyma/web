@@ -1,10 +1,19 @@
-import { useEffect, useRef, useState } from 'react'
+﻿import { useEffect, useRef, useState } from 'react'
 import type { SubmitEvent } from 'react'
 import { categories, createReportText, validateReport } from './report'
 import type { ReportDraft, ReportErrors } from './report'
 import { copyReport } from './clipboard'
 import { resolveReportingRoute } from './routing'
+import { BrandMark } from './components/BrandMark'
+import { CategoryIcon } from './components/CategoryIcon'
 import './App.css'
+
+const categoryLabels = {
+  stop: 'Haltestelle',
+  street: 'Straße',
+  waste: 'Müll',
+  other: 'Sonstiges',
+} as const
 
 function App() {
   const [draft, setDraft] = useState<ReportDraft>({ category: '', location: '', description: '' })
@@ -16,9 +25,13 @@ function App() {
   const textRef = useRef<HTMLPreElement>(null)
   const route = resolveReportingRoute(draft)
   const reportText = createReportText(draft)
+  const hasOfficialRoute = route.kind === 'official-contact'
+  const inputErrors = validateReport(draft)
+  const canCheckRoute = !inputErrors.category && !inputErrors.location
 
   useEffect(() => {
-    headingRef.current?.focus()
+    headingRef.current?.focus({ preventScroll: true })
+    window.scrollTo(0, 0)
   }, [preview])
 
   function update<K extends keyof ReportDraft>(field: K, value: ReportDraft[K]) {
@@ -54,68 +67,87 @@ function App() {
     <>
       <a className="skip-link" href="#main">Zum Inhalt</a>
       <header className="site-header">
-        <span className="wordmark">FixMyMA</span>
+        <div className="brand"><BrandMark /><span className="wordmark">FixMyMA</span></div>
         <span className="city">Mannheim</span>
       </header>
-      <main id="main">
-        <h1 ref={headingRef} tabIndex={-1}>{preview ? 'Meldung prüfen' : 'Schaden melden'}</h1>
+      <main id="main" className={preview ? 'preview-page' : 'form-page'}>
+        <h1 ref={headingRef} tabIndex={-1}>
+          {preview ? (hasOfficialRoute ? 'Meldeweg: rnv' : 'Meldeweg noch offen') : 'Schaden melden'}
+        </h1>
         {preview ? (
           <div className="preview">
-            <div className="field">
-              <h2 id="report-title">Dein Meldetext</h2>
-              <p className="hint" id="report-hint">Prüfe Ort und Beschreibung, bevor du die Meldung weitergibst.</p>
-              <pre ref={textRef} id="report-text" className="report-text" tabIndex={0} role="region"
-                aria-labelledby="report-title" aria-describedby="report-hint">{reportText}</pre>
-            </div>
-            <section className="route" aria-labelledby="route-title">
-              <h2 id="route-title">{route.kind === 'official-contact' ? 'Meldeweg: rnv' : 'Meldeweg noch unklar'}</h2>
-              <p>{route.explanation}</p>
-              {route.kind === 'official-contact' && (
+            <section className="route" aria-label="Meldeweg und nächster Schritt">
+              {hasOfficialRoute ? (
                 <>
-                  <p>Kopiere den Text und füge ihn im rnv-Kontaktformular ein. Dort wählst du dein Anliegen und sendest die Meldung selbst ab.</p>
-                  <details className="source-details">
-                    <summary>Quelle zum Meldeweg</summary>
-                    <p>{route.contact.scope}</p>
-                    <p className="hint">
-                      <a href={route.contact.url} target="_blank" rel="noreferrer">{route.contact.sourceTitle} (neuer Tab)</a>
-                      {' · geprüft am '}{new Date(`${route.contact.verifiedOn}T12:00:00Z`).toLocaleDateString('de-DE')}
-                    </p>
-                  </details>
+                  <p className="next-step">Kopiere deinen Text und füge ihn im rnv-Kontaktformular ein. Dort sendest du die Meldung selbst ab.</p>
+                  <p className="route-note">{route.explanation}</p>
+                </>
+              ) : (
+                <>
+                  <p className="next-step">{route.explanation}</p>
+                  <p className="route-note">Dein Meldetext ist trotzdem bereit: Kopiere ihn für die Weitergabe, sobald du die passende Meldestelle geklärt hast.</p>
                 </>
               )}
-            </section>
-            <div className="actions">
-              <button className="primary" type="button" onClick={copy} disabled={copyState === 'copying'}>
-                {copyState === 'copying' ? 'Wird kopiert …' : 'Meldetext kopieren'}
-              </button>
+              <div className="handoff-actions">
+                <button className="primary" type="button" onClick={copy} disabled={copyState === 'copying'}>
+                  {copyState === 'copying' ? 'Wird kopiert …' : 'Meldetext kopieren'}
+                </button>
+                {hasOfficialRoute && (
+                  <a className="secondary" href={route.contact.url} target="_blank" rel="noreferrer"
+                    aria-label="Kontaktformular öffnen (rnv, neuer Tab)">
+                    Kontaktformular öffnen
+                  </a>
+                )}
+              </div>
               <p className="copy-status" role="status" aria-live="polite">
-                {copyState === 'copied' && 'Meldetext kopiert. Du kannst ihn jetzt selbst weitergeben. Es wurde nichts versendet.'}
-                {copyState === 'manual' && 'Automatisches Kopieren ist nicht möglich. Bitte markiere und kopiere den Meldetext manuell.'}
+                {copyState === 'copied' && 'Meldetext kopiert. Du kannst ihn jetzt selbst weitergeben.'}
+                {copyState === 'manual' && 'Automatisches Kopieren ist nicht möglich. Der Text ist unten markiert. Kopiere ihn bitte manuell.'}
               </p>
-              {route.kind === 'official-contact' && (
-                <a className="secondary" href={route.contact.url} target="_blank" rel="noreferrer">
-                  rnv-Kontaktformular öffnen (neuer Tab)
-                </a>
-              )}
-              <button className="text-button" type="button" onClick={() => setPreview(false)}>Angaben bearbeiten</button>
-            </div>
+              {hasOfficialRoute && <p className="external-note">Das Kontaktformular öffnet sich in einem neuen Tab.</p>}
+            </section>
+
+            <section className="report" aria-labelledby="report-title">
+              <div className="report-heading">
+                <h2 id="report-title">Dein Meldetext</h2>
+                <button className="text-button" type="button" onClick={() => setPreview(false)}>Angaben bearbeiten</button>
+              </div>
+              <pre ref={textRef} id="report-text" className="report-text" tabIndex={0} role="region"
+                aria-labelledby="report-title">{reportText}</pre>
+            </section>
+
+            {hasOfficialRoute && (
+              <details className="source-details">
+                <summary>Quelle zum Meldeweg</summary>
+                <div className="source-content">
+                  <p>{route.contact.scope}</p>
+                  <p className="hint">
+                    <a href={route.contact.url} target="_blank" rel="noreferrer">{route.contact.sourceTitle} (neuer Tab)</a>
+                    <span className="source-date">Geprüft am {new Date(`${route.contact.verifiedOn}T12:00:00Z`).toLocaleDateString('de-DE')}</span>
+                  </p>
+                </div>
+              </details>
+            )}
           </div>
         ) : (
+          <>
+          <p className="pilot-scope">Pilot: Geprüfter rnv-Kontaktweg für Haltestelle Waldhof Nord. Sonst Textentwurf.</p>
           <form ref={formRef} onSubmit={submit} noValidate>
             {Object.values(errors).some(Boolean) && (
               <p className="error error-summary" role="alert">Bitte ergänze die markierten Angaben.</p>
             )}
             <fieldset aria-describedby={errors.category ? 'category-error' : undefined}>
-              <legend>Kategorie</legend>
+              <legend className="visually-hidden">Kategorie</legend>
               <div className="categories">
                 {categories.map((category) => (
                   <label className="category" key={category.id}>
-                    <input type="radio" name="category" value={category.id}
+                    <input className="visually-hidden" type="radio" name="category" value={category.id}
                       checked={draft.category === category.id}
                       aria-invalid={Boolean(errors.category)} required
                       aria-describedby={errors.category ? 'category-error' : undefined}
                       onChange={() => update('category', category.id)} />
-                    <span>{category.label}</span>
+                    <CategoryIcon category={category.id} />
+                    <span>{categoryLabels[category.id]}</span>
+                    <span className="selection-mark" aria-hidden="true" />
                   </label>
                 ))}
               </div>
@@ -124,34 +156,52 @@ function App() {
 
             <div className="field">
               <label htmlFor="location">Ort</label>
-              <p className="hint" id="location-hint">Haltestelle oder Straße mit Hausnummer in Mannheim</p>
               <input id="location" name="location" type="text" required maxLength={160}
                 autoComplete="off" placeholder="Zum Beispiel: Waldhof Nord"
                 value={draft.location} onChange={(event) => update('location', event.target.value)}
                 aria-invalid={Boolean(errors.location)}
-                aria-describedby={`location-hint${errors.location ? ' location-error' : ''}`} />
+                aria-describedby={`location-route${errors.location ? ' location-error' : ''}`} />
               {errors.location && <p className="error" id="location-error">{errors.location}</p>}
+              <div className="route-notice" id="location-route" role="status" aria-live="polite" aria-atomic="true">
+                {!canCheckRoute ? (
+                  <p className="hint">Meldeweg nach Kategorie und Ort</p>
+                ) : hasOfficialRoute ? (
+                  <>
+                    <p className="route-notice-title">Geprüfter Meldeweg: rnv</p>
+                    <p className="hint">{route.explanation}</p>
+                    <a href={route.contact.url} target="_blank" rel="noreferrer"
+                      aria-label="rnv-Kontaktformular öffnen (neuer Tab)">rnv-Kontaktformular öffnen</a>
+                  </>
+                ) : (
+                  <>
+                    <p className="route-notice-title">Meldeweg offen</p>
+                    <p className="hint">Du kannst trotzdem einen Meldetext erstellen und kopieren.</p>
+                  </>
+                )}
+              </div>
             </div>
 
             <div className="field">
-              <label htmlFor="description">Beschreibung</label>
-              <p className="hint" id="description-hint">Was ist kaputt? Wo genau ist der Schaden?</p>
-              <textarea id="description" name="description" required rows={5} maxLength={2000}
-                placeholder="Zum Beispiel: Glasscheibe am Wartehäuschen zerbrochen."
+              <div className="field-heading">
+                <label htmlFor="description">Beschreibung</label>
+                <span className="hint character-count" id="description-count"><span className="visually-hidden">Zeichen: </span>{draft.description.length.toLocaleString('de-DE')} / 2.000</span>
+              </div>
+              <textarea id="description" name="description" required rows={3} maxLength={2000}
+                placeholder="Zum Beispiel: Glasscheibe am Wartehäuschen zerbrochen. Scherben liegen neben der Sitzbank."
                 value={draft.description} onChange={(event) => update('description', event.target.value)}
                 aria-invalid={Boolean(errors.description)}
-                aria-describedby={`description-hint description-count${errors.description ? ' description-error' : ''}`} />
-              <p className="hint character-count" id="description-count">{draft.description.length.toLocaleString('de-DE')} / 2.000 Zeichen</p>
+                aria-describedby={`description-count${errors.description ? ' description-error' : ''}`} />
               {errors.description && <p className="error" id="description-error">{errors.description}</p>}
             </div>
 
-            <div className="actions">
+            <div className="form-actions">
               <button className="primary" type="submit">Meldung vorbereiten</button>
-              <p className="hint">Du prüfst deine Angaben vor der Weitergabe.</p>
+              <p className="hint">Als Nächstes: Meldetext prüfen</p>
             </div>
           </form>
+          </>
         )}
-        <footer>FixMyMA bereitet deine Meldung vor. Du versendest sie selbst.</footer>
+        <footer>Du versendest die Meldung selbst. FixMyMA übermittelt keine Daten automatisch.</footer>
       </main>
     </>
   )
