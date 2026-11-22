@@ -8,7 +8,9 @@ Mit FixMyMA kannst du einen Schaden in Mannheim beschreiben, den passenden Melde
 
 ## Ablauf
 
-Kategorie, Ort und Beschreibung eingeben, dann „Meldung vorbereiten“. In der Vorschau lassen sich die Angaben prüfen, kopieren und mit „Angaben bearbeiten“ ohne Datenverlust ändern. Ohne Clipboard-Zugriff wird der Text zum manuellen Kopieren markiert. Die Angaben liegen nur im React-Speicher; ein Neuladen verwirft sie. Keine Daten werden automatisch an eine Meldestelle übertragen.
+Kategorie und Ort eingeben: Direkt unter dem Ort zeigt die App schon vor der Beschreibung den geprüften rnv-Kontaktweg für Haltestelle / Waldhof Nord oder „Meldeweg offen“. Der rnv-Link ist sofort erreichbar; ein offener Meldeweg lässt einen Textentwurf weiterhin zu. Der kurze Hinweis vor dem Formular erklärt diesen Pilotumfang.
+
+Danach Beschreibung ergänzen und „Meldung vorbereiten“ wählen. In der Vorschau lassen sich die Angaben prüfen, kopieren und mit „Angaben bearbeiten“ ohne Datenverlust ändern. Ohne Clipboard-Zugriff wird der Text zum manuellen Kopieren markiert. Die Angaben liegen nur im React-Speicher; ein Neuladen verwirft sie. Keine Daten werden automatisch an eine Meldestelle übertragen.
 
 ## Lokal starten
 

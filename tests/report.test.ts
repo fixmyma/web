@@ -33,6 +33,18 @@ describe('report validation', () => {
 })
 
 describe('reporting route', () => {
+  test('should resolve the verified route from category and location before a description exists', () => {
+    const route = resolveReportingRoute({ category: 'stop', location: 'Waldhof Nord' })
+    expect(route.kind).toBe('official-contact')
+    expect(route).toHaveProperty('contact.url', 'https://www.rnv-online.de/unternehmen/kontakt/schreiben-sie-uns/')
+  })
+
+  test('should keep an unknown location open before a description exists', () => {
+    const route = resolveReportingRoute({ category: 'stop', location: 'Paradeplatz' })
+    expect(route.kind).toBe('unconfirmed')
+    expect(route).not.toHaveProperty('contact')
+  })
+
   test('should resolve Waldhof Nord to the official rnv contact without certifying ownership', () => {
     for (const location of ['Waldhof Nord', ' WALDHOF-NORD ', 'Haltestelle Waldhof Nord, Mannheim']) {
       const route = resolveReportingRoute({ ...reference, location })

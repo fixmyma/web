@@ -26,6 +26,8 @@ function App() {
   const route = resolveReportingRoute(draft)
   const reportText = createReportText(draft)
   const hasOfficialRoute = route.kind === 'official-contact'
+  const inputErrors = validateReport(draft)
+  const canCheckRoute = !inputErrors.category && !inputErrors.location
 
   useEffect(() => {
     headingRef.current?.focus({ preventScroll: true })
@@ -127,6 +129,8 @@ function App() {
             )}
           </div>
         ) : (
+          <>
+          <p className="pilot-scope">Pilot in Mannheim: Ein geprüfter Kontaktweg für die Haltestelle Waldhof Nord. Für weitere Orte kannst du einen Textentwurf vorbereiten.</p>
           <form ref={formRef} onSubmit={submit} noValidate>
             {Object.values(errors).some(Boolean) && (
               <p className="error error-summary" role="alert">Bitte ergänze die markierten Angaben.</p>
@@ -156,8 +160,25 @@ function App() {
                 autoComplete="off" placeholder="Zum Beispiel: Waldhof Nord"
                 value={draft.location} onChange={(event) => update('location', event.target.value)}
                 aria-invalid={Boolean(errors.location)}
-                aria-describedby={errors.location ? 'location-error' : undefined} />
+                aria-describedby={`location-route${errors.location ? ' location-error' : ''}`} />
               {errors.location && <p className="error" id="location-error">{errors.location}</p>}
+              <div className="route-notice" id="location-route" role="status" aria-live="polite" aria-atomic="true">
+                {!canCheckRoute ? (
+                  <p className="hint">Wähle eine Kategorie und gib den Ort ein, um den Meldeweg zu prüfen.</p>
+                ) : hasOfficialRoute ? (
+                  <>
+                    <p className="route-notice-title">Geprüfter Meldeweg: rnv</p>
+                    <p className="hint">{route.explanation}</p>
+                    <a href={route.contact.url} target="_blank" rel="noreferrer"
+                      aria-label="rnv-Kontaktformular öffnen (neuer Tab)">rnv-Kontaktformular öffnen</a>
+                  </>
+                ) : (
+                  <>
+                    <p className="route-notice-title">Meldeweg offen</p>
+                    <p className="hint">Du kannst trotzdem einen Meldetext erstellen und kopieren.</p>
+                  </>
+                )}
+              </div>
             </div>
 
             <div className="field">
@@ -178,6 +199,7 @@ function App() {
               <p className="hint">Als Nächstes: Meldeweg und Vorschau</p>
             </div>
           </form>
+          </>
         )}
         <footer>Du versendest die Meldung selbst. FixMyMA übermittelt keine Daten automatisch.</footer>
       </main>

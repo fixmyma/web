@@ -10,7 +10,7 @@ const waldhofNordNames = new Set([
   'haltestelle waldhof nord mannheim',
 ])
 
-export function resolveReportingRoute(draft: ReportDraft) {
+export function resolveReportingRoute(draft: Pick<ReportDraft, 'category' | 'location'>) {
   const location = draft.location.toLocaleLowerCase('de-DE')
     .replace(/[,–—-]/g, ' ').replace(/\s+/g, ' ').trim()
   if (draft.category === 'stop' && waldhofNordNames.has(location)) {
