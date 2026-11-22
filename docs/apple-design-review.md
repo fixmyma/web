@@ -2,6 +2,19 @@
 
 Gerenderter Unslop-Durchgang am 22.11.2026 auf `feat/apple-inspired-design` nach [Unslop von Damir Sokolovsky (@heydamir)](https://github.com/heydamir/unslop/blob/main/skills/unslop/SKILL.md), CC BY 4.0. Keine Bild- oder Videogenerierung.
 
+## Nachbesserung nach Nutzerreview: weniger Neon
+
+Der Nutzer empfand die große Lime-Fläche als zu neonartig. Auf demselben offenen Aufgabenbranch wurden daher die Hauptaktionen auf Dunkelblau mit weißer Schrift umgestellt. Gewählte Kategorien nutzen jetzt eine dezente graublaue Fläche mit Haken. Lime bleibt ausschließlich im kleinen Logo-Detail. Die äußeren Formular- und Kontaktflächen haben 16 statt 24 px Radius, der Meldetext 14 statt 20 px; der Formschatten wurde entfernt. `AGENTS.md` enthält diese aktualisierte Farbregel.
+
+Die aktuelle Variante wurde erneut bei 390 × 844 und 1440 × 1000 px gerendert. Alle zehn Browser-Szenarien, die zusätzlichen schmalen Ansichten und 200 % Schriftgröße bestehen weiterhin. Sieben Vitest-Tests, Lint und Build bestehen. Es wurde kein fachliches Verhalten geändert.
+
+| Aktueller Stand | Mobil | Desktop |
+| --- | --- | --- |
+| Formular | [Screenshot](screenshots/restrained/after-mobile-form.png) | [Screenshot](screenshots/restrained/after-desktop-form.png) |
+| Vorschau | [Screenshot](screenshots/restrained/after-mobile-preview.png) | [Screenshot](screenshots/restrained/after-desktop-preview.png) |
+
+[Gewählte Kategorie](screenshots/restrained/after-mobile-selected.png) · [Browser-Prüfbericht](screenshots/restrained/browser-checks.json). Die folgenden Abschnitte dokumentieren den ursprünglichen Apple-inspirierten Durchgang vor dieser Nachbesserung.
+
 ## Ausgangslage und Auftrag
 
 Der Nutzer möchte die Beschilderungsrichtung durch eine ruhigere, Apple-inspirierte Systemoberfläche ersetzen und den fertigen Vorschlag vor einem Merge prüfen. Der Branch wurde von `origin/main` (`ffd8ef9`) erstellt. Weil der vorherige Designstand noch nicht in `main` enthalten war, wurde er als zusammengehörige Grundlage übernommen; die vorhandene Meldeweg-first-Vorschau bleibt erhalten. Dieser PR ist zur Sichtprüfung vorgesehen und wird nicht automatisch gemergt.

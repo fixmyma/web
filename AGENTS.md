@@ -38,7 +38,7 @@ FixMyMA hilft Menschen in Mannheim, Schäden im öffentlichen Raum zu beschreibe
 ## Oberfläche
 
 - Deutsche, verständliche UI-Texte; mobile Bedienung hat Priorität.
-- Dunkelblau für Text, Lime gezielt für Hauptaktion und gewählte Kategorie. Große Klickflächen, sichtbare Fokuszustände und gut zugeordnete Fehlermeldungen beibehalten.
+- Dunkelblau für Text und Hauptaktionen; Hauptbuttons mit weißer Schrift. Kategorien mit Haken und einer dezenten graublauen Fläche auswählen. Lime ausschließlich als kleines Detail im Logo verwenden, nicht für Buttons oder Auswahlflächen. Große Klickflächen, sichtbare Fokuszustände und gut zugeordnete Fehlermeldungen beibehalten.
 - Kategorie, Ort und Beschreibung stehen im Mittelpunkt. Keine Marketing-Hero-Flächen oder dekorativen Karten hinzufügen.
 - Vorschau und Bearbeiten müssen Eingaben erhalten. Clipboard-Fehler verständlich anzeigen und manuelles Kopieren ermöglichen. Nicht behaupten, dass eine Meldung versendet wurde, wenn nur Text vorbereitet oder kopiert wurde.
 

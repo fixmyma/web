@@ -21,9 +21,8 @@ form {
   gap: 20px;
   padding: 20px 16px;
   border: 1px solid #e5e7eb;
-  border-radius: 24px;
+  border-radius: 16px;
   background: var(--paper);
-  box-shadow: 0 2px 8px rgb(20 38 61 / 2%);
 }
 fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.5rem), 1fr)); gap: 8px; }
@@ -100,8 +99,8 @@ textarea { resize: vertical; min-height: 112px; }
   overflow-wrap: anywhere;
   transition: background-color 140ms ease-out;
 }
-.primary { background: var(--lime); }
-.primary:hover { background: #c5e15d; }
+.primary { background: var(--ink); color: #ffffff; }
+.primary:hover { background: #233c58; }
 .secondary { background: #f0f1f4; border-color: #8a94a3; }
 .secondary:hover { background: #e6e8ee; }
 .primary:disabled { cursor: wait; opacity: 0.7; }
@@ -110,7 +109,7 @@ footer { margin-top: 24px; padding-inline: 4px; color: var(--secondary); font-si
 .skip-link:focus { top: 8px; }
 h1[tabindex]:focus { outline: none; }
 .preview { display: grid; gap: 24px; }
-.route { min-width: 0; line-height: 1.5; padding: 20px; border: 1px solid #e5e7eb; border-radius: 24px; background: var(--paper); }
+.route { min-width: 0; line-height: 1.5; padding: 20px; border: 1px solid #e5e7eb; border-radius: 16px; background: var(--paper); }
 .next-step { max-width: 60ch; }
 .route-note { margin-top: 12px; color: var(--secondary); font-size: 0.875rem; line-height: 1.5; max-width: 66ch; }
 .handoff-actions { display: grid; gap: 12px; margin-top: 24px; }
@@ -125,7 +124,7 @@ h1[tabindex]:focus { outline: none; }
   margin: 0;
   padding: 20px;
   border: 1px solid #e5e7eb;
-  border-radius: 20px;
+  border-radius: 14px;
   background: var(--paper);
   font: inherit;
   line-height: 1.6;
