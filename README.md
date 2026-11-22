@@ -16,10 +16,10 @@ Unter Windows bei gesperrten PowerShell-Skripten `npm.cmd` verwenden.
 ```sh
 npm run lint
 npm run build
-node --test tests/report.test.mjs
+npm test
 ```
 
-Die Logiktests benötigen Node.js 22.18+ mit TypeScript Type Stripping (geprüft mit Node 24). Sie prüfen Validierung, die begrenzte Zuordnung, Meldetext und Clipboard-Erfolg/Fehler mit einem Test-Clipboard. Sie ersetzen keinen Browser- oder Gerätetest.
+Die TypeScript-Logiktests in `tests/report.test.ts` laufen mit Vitest (geprüft mit Node 24). Sie prüfen Validierung, die begrenzte Zuordnung, Meldetext und Clipboard-Erfolg/Fehler mit einem Test-Clipboard. `npm test` führt sie einmal aus; `npm run test:watch` startet den Watch-Modus. `npm run build` prüft auch die Typen der Tests. Sie ersetzen keinen Browser- oder Gerätetest.
 
 ## GitHub-Prüfungen und Updates
 
