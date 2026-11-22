@@ -40,4 +40,4 @@ jobs:
         run: npm run build
 
       - name: Test reporting logic
-        run: node --test tests/report.test.mjs
+        run: npm test
