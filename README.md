@@ -48,6 +48,8 @@ Dependabot prüft npm-Abhängigkeiten und GitHub Actions montags um 09:00 Uhr (E
 
 CodeQL verwendet GitHubs Default Setup für JavaScript/TypeScript. Ergebnisse stehen unter **Security → Code scanning**; Dependabot-Hinweise unter **Security → Dependabot**.
 
-## Noch manuell prüfen
+## Browserprüfung und Designreview
 
-Bei 390 px und Desktop: leeres Formular absenden, Fehler/Fokus prüfen; Haltestelle / Waldhof Nord / Glasschaden eingeben; Vorschau prüfen; zurückgehen und Eingaben ändern; Text kopieren und in einen lokalen Texteditor einfügen; verweigerte Clipboard-Berechtigung und unbekannte Orte prüfen. Auch Tastaturbedienung, Zoom und echte mobile Bildschirmtastatur sind zu prüfen.
+Formular und Vorschau wurden bei 390 × 844 px und 1440 × 1000 px vor und nach der Gestaltung im Browser geprüft. Validierung, Waldhof Nord, ein unbekannter Ort, Bearbeiten, Tastaturbedienung und echtes Kopieren wurden mit einem lokalen Playwright-Testbrowser geprüft. Ein simulierter Clipboard-Fehler wurde zusätzlich bis zum manuellen Kopieren getestet. Vorher-/Nachher-Screenshots, Messwerte und die genauen Prüfgrenzen stehen im [gerenderten Designreview](docs/design-review.md).
+
+Offen bleiben Tests auf einem physischen Smartphone mit Bildschirmtastatur sowie weitere Browser-Engines. Die mobilen Aufnahmen zeigen eine Browser-Emulation.

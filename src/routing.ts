@@ -17,11 +17,11 @@ export function resolveReportingRoute(draft: ReportDraft) {
     return {
       kind: 'official-contact' as const,
       contact: reportingContacts.rnv,
-      explanation: 'Die rnv nimmt Hinweise auf Schäden an Haltestellen entgegen. Wer die konkrete Glasscheibe wartet, ist hier nicht bestätigt.',
+      explanation: 'Die Wartungszuständigkeit für die konkrete Glasscheibe ist nicht bestätigt.',
     }
   }
   return {
     kind: 'unconfirmed' as const,
-    explanation: 'Für diese Kombination aus Kategorie und Ort ist noch kein verifizierter Meldeweg hinterlegt. Die Zuständigkeit ist unklar. Du kannst den Text kopieren und verwenden, sobald du die passende Meldestelle geklärt hast.',
+    explanation: 'Für diesen Ort und diese Kategorie ist noch kein geprüfter Meldeweg hinterlegt.',
   }
 }
